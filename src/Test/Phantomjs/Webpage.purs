@@ -12,6 +12,9 @@ module Test.Phantomjs.Webpage (
 , getClipRect
 , create
 , evaluate0
+, evaluate1
+, evaluate2
+, evaluate3
 , open
 , openWithTimeout
 , plainText
