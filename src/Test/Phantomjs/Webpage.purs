@@ -15,6 +15,7 @@ module Test.Phantomjs.Webpage (
 , evaluate1
 , evaluate2
 , evaluate3
+, injectJs
 , open
 , openWithTimeout
 , plainText
@@ -148,6 +149,20 @@ foreign import evaluate3
   -> b
   -> c
   -> Eff (phantomjs :: PHANTOMJS | e) d
+
+-- | Injects external script code from the specified file into the page. (like
+-- | page.includeJs, except that the file does not need to be accessible from
+-- | the hosted page).
+-- |
+-- | If the file cannot be found in the current directory, libraryPath is used
+-- | for additional look up. This function returns true if injection is
+-- | successful, otherwise it returns false.
+-- |
+foreign import injectJs
+  :: forall e.
+     Page
+  -> String
+  -> Eff (phantomjs :: PHANTOMJS | e) Boolean
 
 -- | Opens a connection to the given URL.
 -- |

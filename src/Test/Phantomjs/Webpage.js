@@ -73,6 +73,14 @@ exports.evaluate3 = function (page) {
   }
 }
 
+exports.injectJs = function (page) {
+  return function (file) {
+    return function () {
+      return page.injectJs(file)
+    }
+  }
+}
+
 exports._open = function (onError) {
   return function (onSuccess) {
     return function (page) {
