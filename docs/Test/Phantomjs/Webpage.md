@@ -105,6 +105,54 @@ environment. `evaluateN` takes N arguments. Arguments must be
 JSON-serializable.
 
 
+#### `evaluate1`
+
+``` purescript
+evaluate1 :: forall e a b. Page -> (a -> BrowserProc b) -> a -> Eff (phantomjs :: PHANTOMJS | e) b
+```
+
+Run a NON-closure procedure in the browser
+environment. `evaluateN` takes N arguments. Arguments must be
+JSON-serializable.
+
+
+#### `evaluate2`
+
+``` purescript
+evaluate2 :: forall e a b c. Page -> (a -> b -> BrowserProc c) -> a -> b -> Eff (phantomjs :: PHANTOMJS | e) c
+```
+
+Run a NON-closure procedure in the browser
+environment. `evaluateN` takes N arguments. Arguments must be
+JSON-serializable.
+
+
+#### `evaluate3`
+
+``` purescript
+evaluate3 :: forall e a b c d. Page -> (a -> b -> c -> BrowserProc d) -> a -> b -> c -> Eff (phantomjs :: PHANTOMJS | e) d
+```
+
+Run a NON-closure procedure in the browser
+environment. `evaluateN` takes N arguments. Arguments must be
+JSON-serializable.
+
+
+#### `injectJs`
+
+``` purescript
+injectJs :: forall e. Page -> String -> Eff (phantomjs :: PHANTOMJS | e) Boolean
+```
+
+Injects external script code from the specified file into the page. (like
+page.includeJs, except that the file does not need to be accessible from
+the hosted page).
+
+If the file cannot be found in the current directory, libraryPath is used
+for additional look up. This function returns true if injection is
+successful, otherwise it returns false.
+
+
 #### `open`
 
 ``` purescript
@@ -185,6 +233,3 @@ setZoomFactor :: forall e. Page -> Number -> Eff (phantomjs :: PHANTOMJS | e) Un
 ```
 
 Sets the zoom factor for the page.
-
-
-
